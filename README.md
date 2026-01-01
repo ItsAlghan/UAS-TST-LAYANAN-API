@@ -1,4 +1,4 @@
-# Stock Data Microservice (Tugas 2 - Layanan Mandiri)
+# Stock Data Microservice
 
 Ini adalah layanan Microservice yang menyediakan API untuk pengelolaan data saham. Layanan ini dibangun menggunakan **Node.js** dan **MySQL**, dikemas dalam **Docker Container**, dan dilengkapi dengan dokumentasi interaktif **Swagger UI**.
 
