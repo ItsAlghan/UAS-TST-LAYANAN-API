@@ -10,7 +10,14 @@ const options = {
       contact: { name: 'Mahasiswa TST' },
     },
     servers: [
-      { url: 'http://localhost:3000', description: 'Local Server' }
+      { 
+        url: 'https://alghan.ibayderikfariqalghanzaka.my.id', 
+        description: 'Public Server (Cloudflare)' 
+      },
+      { 
+        url: 'http://localhost:3000', 
+        description: 'Local Development' 
+      }
     ],
     components: {
       securitySchemes: {

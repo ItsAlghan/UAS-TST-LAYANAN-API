@@ -16,21 +16,29 @@ services:
     restart: always
 
   db:
-    image: mysql:8.0-oracle
-    command: --default-authentication-plugin=mysql_native_password
+    # KITA GANTI IMAGE JADI MARIADB (Lebih Ringan untuk STB)
+    image: mariadb:10.6
+    
+    # Command ini dihapus karena MariaDB tidak butuh plugin auth ribet
+    # command: --default-authentication-plugin=mysql_native_password 
+    
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: stock_db
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     volumes:
-      - db_data_final:/var/lib/mysql
+      - db_data_final_stb:/var/lib/mysql
+    
+    # HEALTHCHECK YANG "LEBIH SABAR"
     healthcheck:
+      # Cek apakah database sudah bangun
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
       interval: 10s
-      timeout: 5s
-      retries: 5
+      timeout: 10s
+      retries: 30       # Kita coba ping sampai 30 kali (Total 5 menit)
+      start_period: 30s # Kasih waktu napas 30 detik di awal sebelum mulai ngecek
     restart: always
 
 volumes:
-  db_data_final:
+  db_data_final_stb:
