@@ -45,6 +45,7 @@ Buka terminal di dalam folder proyek, lalu jalankan perintah:
 ```bash
 docker compose up -d --build
 
+---
 Tunggu beberapa saat. Docker akan mendownload image, membangun container, dan melakukan import data CSV ke database secara otomatis.
 
 ### 4. Cek Status
@@ -105,3 +106,4 @@ Solusi: Ini normal terjadi saat container baru pertama kali dinyalakan (MySQL bu
 
 Masalah: Data saham kosong atau harga 0.
 Solusi: Pastikan file DaftarSaham.csv ada di folder utama sebelum menjalankan docker compose up. Jika file CSV diubah, jalankan docker compose down -v (untuk menghapus volume lama) lalu build ulang.
+---
