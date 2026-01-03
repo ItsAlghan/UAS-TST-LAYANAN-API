@@ -47,11 +47,7 @@ Pastikan struktur folder proyek lengkap dan file `DaftarSaham.csv` berada di roo
 
 ### 3. Menjalankan Container
 Buka terminal di dalam folder proyek, lalu jalankan perintah:
-
-```bash
 docker compose up -d --build
-
----
 Tunggu beberapa saat. Docker akan mendownload image, membangun container, dan melakukan import data CSV ke database secara otomatis.
 
 ### 4. Cek Status
@@ -85,26 +81,25 @@ GET	/api/stocks/sort/{type}	Mengurutkan harga saham. Ganti {type} dengan expensi
 
 
 ## Struktur Folder ProyekPlaintext.
-├── DaftarSaham.csv          # Sumber Data CSV (Raw Data)
-├── docker-compose.yml       # Konfigurasi Orkestrasi Docker
-├── Dockerfile               # Konfigurasi Image Node.js
-├── package.json             # Daftar Library (Dependencies)
-├── public/                  # Halaman Web Statis (Landing Page)
+├── DaftarSaham.csv       
+├── docker-compose.yml       
+├── Dockerfile               
+├── package.json             
+├── public/                 
 │   └── index.html
 └── src/
-    ├── app.js               # Entry Point Aplikasi Server
+    ├── app.js             
     ├── config/
-    │   ├── database.js      # Konfigurasi Koneksi MySQL Pool
-    │   └── swagger.js       # Konfigurasi Dokumentasi API (JSON Format)
-    ├── controllers/         # Logika Bisnis (Search, Sort, Analytics)
+    │   ├── database.js      
+    │   └── swagger.js       
+    ├── controllers/        
     │   └── stockController.js
-    ├── middlewares/         # Middleware Keamanan
-    │   └── auth.js          # Verifikasi API Key
-    ├── routes/              # Routing URL API
+    ├── middlewares/         
+    │   └── auth.js         
+    ├── routes/             
     │   └── stockRoutes.js
     └── utils/
-        └── seeder.js        # Script Otomatis Import CSV ke Database
-
+        └── seeder.js      
 
 ## Troubleshooting
 Masalah: Muncul error "Database Error: connect ECONNREFUSED" di log.
@@ -112,4 +107,3 @@ Solusi: Ini normal terjadi saat container baru pertama kali dinyalakan (MySQL bu
 
 Masalah: Data saham kosong atau harga 0.
 Solusi: Pastikan file DaftarSaham.csv ada di folder utama sebelum menjalankan docker compose up. Jika file CSV diubah, jalankan docker compose down -v (untuk menghapus volume lama) lalu build ulang.
----
