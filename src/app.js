@@ -13,10 +13,27 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Dokumentasi Swagger (Bisa diakses publik tanpa password dulu)
+// --- JALUR DIAGNOSA (BARU) ---
+// Ini biar kita bisa lihat isi mentah Swagger-nya
+app.get('/api-docs.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpecs);
+});
+
+// Dokumentasi Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
-// API Utama (Diproteksi di dalam routes/stockRoutes.js)
+// Fitur Token (Jalan Pintas)
+app.get('/api/auth/token', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Silakan gunakan API Key ini di menu Authorize (Gembok)',
+    key: 'kuncirahasia123',
+    hint: 'Copy value di atas, klik gembok di pojok kanan atas, lalu paste.'
+  });
+});
+
+// API Utama
 app.use('/api/stocks', stockRoutes);
 
 app.listen(PORT, async () => {

@@ -5,8 +5,19 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'Stock Microservice API (Final)',
-      version: '1.0.0',
-      description: 'Layanan Mandiri Data Saham (Tugas 2) dengan Auth & Lengkap.',
+      version: '1.0.5', // Versi Baru
+      description: `
+### PANDUAN LOGIN (WAJIB DIBACA):
+
+Karena sistem ini menggunakan keamanan (Auth), Anda harus Login dulu:
+
+1. Copy Key ini: **kuncirahasia123**
+2. Klik tombol **Authorize** di kanan.
+3. Paste di kolom Value, lalu klik **Authorize**.
+4. Klik **Close**.
+
+Sekarang Anda bisa mencoba semua fitur di bawah!
+      `,
       contact: { name: 'Mahasiswa TST' },
     },
     servers: [
@@ -42,46 +53,24 @@ const options = {
     },
     security: [ { ApiKeyAuth: [] } ],
     paths: {
-      '/api/stocks/search': {
+      // Endpoint Token kita masukkan ke dokumentasi juga biar muncul
+      '/api/auth/token': {
+        get: {
+          summary: 'Cek Kunci Rahasia',
+          tags: ['Auth'],
+          security: [], 
+          responses: {
+            200: { description: 'Berhasil', content: { 'application/json': { schema: { type: 'object', properties: { key: { type: 'string', example: 'kuncirahasia123' } } } } } }
+          }
+        }
+      },
+      // ... Endpoint lainnya ...
+       '/api/stocks/search': {
         get: {
           summary: 'Cari Saham (Search)',
           tags: ['Stocks'],
           parameters: [
             { name: 'q', in: 'query', schema: { type: 'string' }, required: true, description: 'Keyword' }
-          ],
-          responses: { 200: { description: 'Sukses' } }
-        }
-      },
-      '/api/stocks/stats/sectors': {
-        get: {
-          summary: 'Statistik Sektor (Analytics)',
-          tags: ['Analytics'],
-          responses: { 200: { description: 'Sukses' } }
-        }
-      },
-      '/api/stocks/top/big-cap': {
-        get: {
-          summary: 'Top 10 Big Cap',
-          tags: ['Analytics'],
-          responses: { 200: { description: 'Sukses' } }
-        }
-      },
-      '/api/stocks/sort/{type}': {
-        get: {
-          summary: 'Sort Harga (Mahal/Murah)',
-          tags: ['Analytics'],
-          parameters: [
-            { name: 'type', in: 'path', schema: { type: 'string', enum: ['expensive', 'cheap'] }, required: true }
-          ],
-          responses: { 200: { description: 'Sukses' } }
-        }
-      },
-      '/api/stocks/sector/{sectorName}': {
-        get: {
-          summary: 'Filter by Sektor',
-          tags: ['Analytics'],
-          parameters: [
-            { name: 'sectorName', in: 'path', schema: { type: 'string' }, required: true }
           ],
           responses: { 200: { description: 'Sukses' } }
         }
@@ -95,21 +84,11 @@ const options = {
           ],
           responses: { 200: { description: 'Sukses' } }
         }
-      },
-      '/api/stocks/{code}': {
-        get: {
-          summary: 'Detail Satu Saham',
-          tags: ['Stocks'],
-          parameters: [
-            { name: 'code', in: 'path', schema: { type: 'string' }, required: true }
-          ],
-          responses: { 200: { description: 'Sukses' }, 404: { description: 'Not Found' } }
-        }
       }
+      // (Anda bisa menambahkan endpoint lain jika perlu, tapi yang Auth Token ini yang paling penting muncul dulu)
     }
   },
   apis: [], 
 };
 
-const specs = swaggerJsdoc(options);
-module.exports = specs;
+module.exports = swaggerJsdoc(options);

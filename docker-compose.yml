@@ -3,42 +3,10 @@ services:
     build: .
     ports:
       - "3000:3000"
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
-      - DB_HOST=db
-      - DB_USER=user
-      - DB_PASSWORD=password
-      - DB_NAME=stock_db
       - PORT=3000
-      - API_KEY=kuncirahasia123 
-    restart: always
-
-  db:
-    # KITA GANTI IMAGE JADI MARIADB (Lebih Ringan untuk STB)
-    image: mariadb:10.6
-    
-    # Command ini dihapus karena MariaDB tidak butuh plugin auth ribet
-    # command: --default-authentication-plugin=mysql_native_password 
-    
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: stock_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      - API_KEY=kuncirahasia123
     volumes:
-      - db_data_final_stb:/var/lib/mysql
-    
-    # HEALTHCHECK YANG "LEBIH SABAR"
-    healthcheck:
-      # Cek apakah database sudah bangun
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
-      interval: 10s
-      timeout: 10s
-      retries: 30       # Kita coba ping sampai 30 kali (Total 5 menit)
-      start_period: 30s # Kasih waktu napas 30 detik di awal sebelum mulai ngecek
+      # Mounting folder agar file .db tidak hilang saat restart
+      - ./data_sqlite:/usr/src/app/data
     restart: always
-
-volumes:
-  db_data_final_stb:
