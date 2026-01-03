@@ -1,5 +1,4 @@
-
-HASIL
+## HASIL
 <img width="1919" height="992" alt="image" src="https://github.com/user-attachments/assets/03f4297c-2f4a-493b-a667-1eaec0617c5a" />
 <img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/58a86c53-965c-4ef3-a954-874160498b71" />
 
@@ -8,7 +7,7 @@ HASIL
 
 Ini adalah layanan Microservice yang menyediakan API untuk pengelolaan data saham. Layanan ini dibangun menggunakan **Node.js** dan **MySQL**, dikemas dalam **Docker Container**, dan dilengkapi dengan dokumentasi interaktif **Swagger UI**.
 
-Proyek ini dibuat untuk memenuhi **Tugas 2**.
+Proyek ini dibuat untuk memenuhi **Tugas 2 UAS**.
 
 ---
 
@@ -23,7 +22,6 @@ Proyek ini dibuat untuk memenuhi **Tugas 2**.
 4.  **Auto-Seeding**: Database otomatis terisi data dari file `DaftarSaham.csv` saat container pertama kali dijalankan.
 5.  **Dokumentasi API (Swagger)**: Antarmuka UI untuk mencoba API tanpa Postman.
 6.  **Keamanan (Bonus)**: Proteksi Endpoint menggunakan **API Key**.
-7.  **Anti-Crash**: Mekanisme *Healthcheck* dan *Retry Connection* untuk koneksi database yang stabil.
 
 ---
 
@@ -33,7 +31,7 @@ Proyek ini dibuat untuk memenuhi **Tugas 2**.
 * **Database**: MySQL 8.0
 * **Containerization**: Docker & Docker Compose
 * **Documentation**: Swagger UI Express
-* **Tools Lain**: CSV-Parser, Helmet (Security)
+* **Tools Lain**: CSV-Parser, Helmet
 
 ---
 
@@ -43,7 +41,7 @@ Proyek ini dibuat untuk memenuhi **Tugas 2**.
 Pastikan **Docker** dan **Docker Compose** sudah terinstall di mesin Anda.
 
 ### 2. Persiapan File
-Pastikan struktur folder proyek lengkap dan file `DaftarSaham.csv` berada di root folder (sejajar dengan `docker-compose.yml`).
+Pastikan struktur folder proyek lengkap dan file `DaftarSaham.csv` berada di root folder.
 
 ### 3. Menjalankan Container
 Buka terminal di dalam folder proyek, lalu jalankan perintah:
@@ -56,8 +54,8 @@ Indikator sukses adalah munculnya pesan: Layanan Mandiri RUNNING di port 3000.
 
 ## Cara Mengakses Layanan
 Setelah container berjalan, layanan dapat diakses melalui Browser.
-### 1. Halaman Status ServerBuka URL berikut untuk memastikan server online:👉 http://localhost:3000 (atau http://[IP_STB]:3000)
-### 2. Dokumentasi API (Swagger UI) - REKOMENDASICara termudah dan terlengkap untuk mencoba API adalah melalui Swagger:👉 http://localhost:3000/api-docs🔐
+### 1. Halaman Status ServerBuka URL berikut untuk memastikan server online: http://localhost:3000 (atau http://[IP_STB]:3000)
+### 2. Dokumentasi API (Swagger UI) - REKOMENDASICara termudah dan terlengkap untuk mencoba API adalah melalui Swagger: http://localhost:3000/api-docs
 
 ## Autentikasi (API Key)
 Layanan ini menerapkan prosedur authentication (Tantangan/Bonus). Setiap permintaan ke API harus menyertakan API Key yang valid.API Key Default: kuncirahasia123 (Dikonfigurasi di dalam file docker-compose.yml pada variabel API_KEY)
@@ -77,29 +75,7 @@ GET	/api/stocks/{code}	Melihat detail satu saham spesifik (Contoh: /api/stocks/B
 GET	/api/stocks/top/big-cap	Menampilkan 10 saham dengan Market Cap terbesar.
 GET	/api/stocks/stats/sectors	Statistik jumlah emiten dan rata-rata harga per sektor.
 GET	/api/stocks/sector/{nama}	Filter saham berdasarkan nama sektor (Contoh: Energy).
-GET	/api/stocks/sort/{type}	Mengurutkan harga saham. Ganti {type} dengan expensive atau cheap.
-
-
-## Struktur Folder ProyekPlaintext.
-├── DaftarSaham.csv       
-├── docker-compose.yml       
-├── Dockerfile               
-├── package.json             
-├── public/                 
-│   └── index.html
-└── src/
-    ├── app.js             
-    ├── config/
-    │   ├── database.js      
-    │   └── swagger.js       
-    ├── controllers/        
-    │   └── stockController.js
-    ├── middlewares/         
-    │   └── auth.js         
-    ├── routes/             
-    │   └── stockRoutes.js
-    └── utils/
-        └── seeder.js      
+GET	/api/stocks/sort/{type}	Mengurutkan harga saham. Ganti {type} dengan expensive atau cheap.  
 
 ## Troubleshooting
 Masalah: Muncul error "Database Error: connect ECONNREFUSED" di log.
