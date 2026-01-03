@@ -1,3 +1,9 @@
+
+HASIL
+<img width="1919" height="992" alt="image" src="https://github.com/user-attachments/assets/03f4297c-2f4a-493b-a667-1eaec0617c5a" />
+<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/58a86c53-965c-4ef3-a954-874160498b71" />
+
+
 # Stock Data Microservice
 
 Ini adalah layanan Microservice yang menyediakan API untuk pengelolaan data saham. Layanan ini dibangun menggunakan **Node.js** dan **MySQL**, dikemas dalam **Docker Container**, dan dilengkapi dengan dokumentasi interaktif **Swagger UI**.
@@ -107,8 +113,3 @@ Solusi: Ini normal terjadi saat container baru pertama kali dinyalakan (MySQL bu
 Masalah: Data saham kosong atau harga 0.
 Solusi: Pastikan file DaftarSaham.csv ada di folder utama sebelum menjalankan docker compose up. Jika file CSV diubah, jalankan docker compose down -v (untuk menghapus volume lama) lalu build ulang.
 ---
-
-HASIL
-<img width="1919" height="992" alt="image" src="https://github.com/user-attachments/assets/03f4297c-2f4a-493b-a667-1eaec0617c5a" />
-<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/58a86c53-965c-4ef3-a954-874160498b71" />
-
