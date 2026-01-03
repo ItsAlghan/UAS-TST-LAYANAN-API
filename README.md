@@ -69,13 +69,13 @@ Cara Login di Swagger:
 
 ## Daftar Endpoint API
 Berikut adalah daftar lengkap endpoint yang tersedia
-GET	/api/stocks	Mengambil semua data saham (mendukung pagination ?page=n).
-GET	/api/stocks/search?q={keyword}	Mencari saham berdasarkan Kode atau Nama Perusahaan.
-GET	/api/stocks/{code}	Melihat detail satu saham spesifik (Contoh: /api/stocks/BBCA).
-GET	/api/stocks/top/big-cap	Menampilkan 10 saham dengan Market Cap terbesar.
-GET	/api/stocks/stats/sectors	Statistik jumlah emiten dan rata-rata harga per sektor.
-GET	/api/stocks/sector/{nama}	Filter saham berdasarkan nama sektor (Contoh: Energy).
-GET	/api/stocks/sort/{type}	Mengurutkan harga saham. Ganti {type} dengan expensive atau cheap.  
+1. GET	/api/stocks	Mengambil semua data saham (mendukung pagination ?page=n).
+2. GET	/api/stocks/search?q={keyword}	Mencari saham berdasarkan Kode atau Nama Perusahaan.
+3. GET	/api/stocks/{code}	Melihat detail satu saham spesifik (Contoh: /api/stocks/BBCA).
+4. GET	/api/stocks/top/big-cap	Menampilkan 10 saham dengan Market Cap terbesar.
+5. GET	/api/stocks/stats/sectors	Statistik jumlah emiten dan rata-rata harga per sektor.
+6. GET	/api/stocks/sector/{nama}	Filter saham berdasarkan nama sektor (Contoh: Energy).
+7. GET	/api/stocks/sort/{type}	Mengurutkan harga saham. Ganti {type} dengan expensive atau cheap.  
 
 ## Troubleshooting
 Masalah: Muncul error "Database Error: connect ECONNREFUSED" di log.
