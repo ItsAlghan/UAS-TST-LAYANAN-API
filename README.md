@@ -54,17 +54,17 @@ Indikator sukses adalah munculnya pesan: Layanan Mandiri RUNNING di port 3000.
 
 ## Cara Mengakses Layanan
 Setelah container berjalan, layanan dapat diakses melalui Browser.
-### 1. Halaman Status ServerBuka URL berikut untuk memastikan server online: http://localhost:3000 (atau http://[IP_STB]:3000)
-### 2. Dokumentasi API (Swagger UI) - REKOMENDASICara termudah dan terlengkap untuk mencoba API adalah melalui Swagger: http://localhost:3000/api-docs
+### 1. Halaman Status ServerBuka URL berikut untuk memastikan server online: http://localhost:3000
+### 2. Cara termudah dan terlengkap untuk mencoba API adalah melalui Swagger: http://localhost:3000/api-docs
 
 ## Autentikasi (API Key)
-Layanan ini menerapkan prosedur authentication (Tantangan/Bonus). Setiap permintaan ke API harus menyertakan API Key yang valid.API Key Default: kuncirahasia123 (Dikonfigurasi di dalam file docker-compose.yml pada variabel API_KEY)
-Cara Login (Authorize) di Swagger:
-1. Buka halaman Swagger UI (/api-docs).
-2. Klik tombol Authorize (Ikon Gembok) di bagian kanan atas.
+Layanan ini menerapkan prosedur authentication (Tantangan/Bonus). Setiap permintaan ke API harus menyertakan API Key yang valid.API Key Default: kuncirahasia123
+Cara Login di Swagger:
+1. Buka halaman Swagger UI.
+2. Klik tombol Authorize di bagian kanan atas.
 3. Masukkan value: kuncirahasia123
 4. Klik tombol Authorize lalu Close.
-5. Sekarang gembok akan tertutup dan Anda bisa mencoba semua fitur (Klik Try it out -> Execute).
+5. Sekarang gembok akan tertutup dan Anda bisa mencoba semua fitur.
 
 
 ## Daftar Endpoint API
